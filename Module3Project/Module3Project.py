@@ -132,9 +132,12 @@ def main():
     #Call the get_toppings functions, returns the list of toppings
     chosen_toppings = get_toppings()
     #Display and order summary
-    print("\nOrder Summary:")
-    print(f"Scoops: {chosen_flavors}")
-    print(f"Toppings: {chosen_toppings}")
+    #print("\nOrder Summary:")
+    #print(f"Scoops: {chosen_flavors}")
+    #print(f"Toppings: {chosen_toppings}")
+
+    #Display receipt:
+    print_receipt(num_scoops, chosen_flavors, chosen_toppings)
 
 #automatically executes the main function when the application runs
 if __name__ == "__main__":
