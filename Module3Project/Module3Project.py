@@ -11,7 +11,7 @@ prices = {"scoop": 2.50, "topping": 0.50}
 def display_menu(): 
     #shows available flavors and toppings to the customer
     print("\n===Welcome to the Ice Cream Shop! ===")
-    print("\nAvailable flowers:")
+    print("\nAvailable flavors:")
 
     #Loop through the flavor list and show each flavor,
     #then do the same for toppings
@@ -28,8 +28,7 @@ def display_menu():
     print("\nPrices")        
     print(f"Scoops: ${prices['scoop']:.2f} each")
     #TODO see if you can use just the place of the , not the name in the {prices['0']}
-    print(f"toppings: ${prices['topping']:.2f)} each")
-
+    print(f"toppings: ${prices['topping']:.2f} each")
 
 def get_flavors():
     #Get ice cream flavor from the customer
@@ -95,6 +94,14 @@ def get_toppings():
 #Main function (this is called and run first, director of the show)
 def main():
     display_menu()
+    #call get_flavors function, returns number of scoops and list of flavors
+    num_scoops, chosen_flavors = get_flavors()
+    #Call the get_toppings functions, returns the list of toppings
+    chosen_toppings = get_toppings()
+    #Display and order summary
+    print("\nOrder Summary:")
+    print(f"Scoops: {chosen_flavors}")
+    print(f"Toppings: {chosen_toppings}")
 
 #automatically executes the main function when the application runs
 if __name__ == "__main__":
