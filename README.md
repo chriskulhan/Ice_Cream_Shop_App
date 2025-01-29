@@ -20,24 +20,20 @@ Prices
 Scoops: $2.50 each
 toppings: $0.50 each
 
-How many scoops would you like? (1-3): 3
+How many scoops would you like? (1-3): 1
 
  For each scoop, enter the flavor you'd like:
-Scoop 1: mint-chocolate chip
-Scoop 2: vanilla
-Scoop 3: coconut
-
-Enter a topping (or 'done' if finished): cherries
-Added cherries!
+Scoop 1: coconut
 
 Enter a topping (or 'done' if finished): walnuts
 Added walnuts!
 
-Enter a topping (or 'done' if finished): chocolate syrup
-Added chocolate syrup!
-
 Enter a topping (or 'done' if finished): done
 
-Order Summary:
-Scoops: ['mint-chocolate chip', 'vanilla', 'coconut']
-Toppings: ['cherries', 'walnuts', 'chocolate syrup']
+=== Your Ice Cream Order ===
+Scoop 1: Coconut
+
+Toppings: 
+ - Walnuts
+
+Total: $3.00
