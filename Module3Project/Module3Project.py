@@ -91,6 +91,39 @@ def get_toppings():
     #Return the list of user chosen toppings
     return chosen_toppings         
 
+def calculate_total (num_scoops, num_toppings):
+    #Calcultes the total cost of the order
+    scoop_cost = num_scoops * prices["scoop"]
+    #prices is a dictionary, look up price
+    topping_cost = num_toppings * prices["topping"]
+    #total cost of the order: 
+    return scoop_cost + topping_cost
+
+def print_receipt(num_scoops, chosen_flavors, chosen_toppings):
+    #prints a nice receipt for the customer
+    print("\n=== Your Ice Cream Order ===")
+    for i in range(num_scoops):
+        #i is the variable that will hold the number for the current scoop
+        #.title will give this title case:
+        print(f"Scoop {i+1}: {chosen_flavors[i].title()}")
+    if chosen_toppings:
+        print("\nToppings: ")
+        #loop through the list of toppings, use for because # in list is known
+        for topping in chosen_toppings:
+            print(f" - {topping.title()}")
+
+    #PRint the total outside of the if loop
+    #new variable called total:
+    #use len to find how many toppings (length of the )
+    total = calculate_total(num_scoops, len(chosen_toppings))      
+    print(f"\nTotal: ${total:.2f}")
+
+    #save the order to a file 
+    #created new file object and allow it to append using 'a'
+    with open("daily_orders.txt", "a" ) as file:
+        file.write(f"\nOrder: {num_scoops} scoops - ${total:.2f}")
+
+
 #Main function (this is called and run first, director of the show)
 def main():
     display_menu()
