@@ -3,7 +3,7 @@
 #Date: 1/29/2025
 
 #Store our ice cream shop's menu items
-cone_type = ["cake", "sugar", "waffle"]
+cone_types = ["cake", "sugar", "waffle"]
 flavors = ["mint-chocolate chip", "coconut", "vanilla", "caramel swirl", "praline pecan", "chocolate chunk"]
 toppings = ["chocolate syrup", "walnuts", "cherries"]
 prices = {"scoop": 2.50, "topping": 0.50}
@@ -28,16 +28,28 @@ def display_menu():
     #display prices to user 
     print("\nPrices")        
     print(f"Scoops: ${prices['scoop']:.2f} each")
-    #TODO see if you can use just the place of the , not the name in the {prices['0']}
+    #TODO see if you can use just the place of the , not the name in the {prices['0']} (extra)
     print(f"toppings: ${prices['topping']:.2f} each")
 
 def get_cone():
     #get cone type from the customer
-    chosen_cone_type = []
+    chosen_cone = []
 
-    while chosen_cone_type 
-
-
+    #ask the user what type of cone they would like:
+    cone = input("Which type of cone would you like: cake, sugar, or waffle?").lower()
+   
+    while True:
+        try:
+    #make sure they choose a cone type you have:
+            if cone in cone_types:   
+                chosen_cone.append(cone)
+                print(f"You chose {cone}!")
+                break
+        except ValueError:
+            print("Please choose cake, sugar, or waffle.") 
+    
+    #return the cone type to the calling function
+    return chosen_cone        
 
 def get_flavors():
     #Get ice cream flavor from the customer
@@ -55,7 +67,7 @@ def get_flavors():
                 break
             print("Please choose between 1 and 3 scoops. ")
         except ValueError:
-            print("Please enter a number.")    
+            print("Please enter a number.")            
     
     #Prompt the user to enter the ice cream flavor
     print("\n For each scoop, enter the flavor you'd like:")
@@ -101,7 +113,7 @@ def get_toppings():
     return chosen_toppings         
 
 def calculate_total (num_scoops, num_toppings):
-    #Calcultes the total cost of the order
+    #Calculates the total cost of the order
     scoop_cost = num_scoops * prices["scoop"]
     #prices is a dictionary, look up price
     topping_cost = num_toppings * prices["topping"]
