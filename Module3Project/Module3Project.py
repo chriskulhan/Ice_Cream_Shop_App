@@ -3,7 +3,8 @@
 #Date: 1/29/2025
 
 #Store our ice cream shop's menu items
-flavors = ["mint-chocolate chip", "coconut", "vanilla"]
+cone_type = ["cake", "sugar", "waffle"]
+flavors = ["mint-chocolate chip", "coconut", "vanilla", "caramel swirl", "praline pecan", "chocolate chunk"]
 toppings = ["chocolate syrup", "walnuts", "cherries"]
 prices = {"scoop": 2.50, "topping": 0.50}
 
@@ -18,7 +19,7 @@ def display_menu():
     #use a for loop because you know the number of flavors
     for flavor in flavors: 
         print(f" - {flavor}")
-        #TODO add the concatenation way to do this
+        #TODO add the concatenation way to do this (extra, not required)
 
     print("\nAvailable Toppings:")
     for topping in toppings:
@@ -29,6 +30,14 @@ def display_menu():
     print(f"Scoops: ${prices['scoop']:.2f} each")
     #TODO see if you can use just the place of the , not the name in the {prices['0']}
     print(f"toppings: ${prices['topping']:.2f} each")
+
+def get_cone():
+    #get cone type from the customer
+    chosen_cone_type = []
+
+    while chosen_cone_type 
+
+
 
 def get_flavors():
     #Get ice cream flavor from the customer
