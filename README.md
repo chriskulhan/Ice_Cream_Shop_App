@@ -1,15 +1,19 @@
-# Ice_Cream_Shop_App
-Module 3 capstone project ITEC 2905
+#example output:
 
-Example output with (maybe) not correct spacing:
-#TODO figure out how to add better spacing and links? to ReadME files
+=== Welcome to the Ice Cream Shop! ===
 
-===Welcome to the Ice Cream Shop! ===
+Available types of cone:
+ - cake
+ - sugar
+ - waffle
 
-Available flavors:
+Available Flavors:
  - mint-chocolate chip
  - coconut
  - vanilla
+ - caramel swirl
+ - praline pecan
+ - chocolate chunk
 
 Available Toppings:
 - chocolate syrup
@@ -17,23 +21,23 @@ Available Toppings:
 - cherries
 
 Prices
-Scoops: $2.50 each
+Scoops: $3.50 each
 toppings: $0.50 each
 
-How many scoops would you like? (1-3): 1
+Which type of cone would you like: cake, sugar, or waffle? waffle
+You chose a waffle cone!
+
+How many scoops of ice cream would you like? (1-3): 2
 
  For each scoop, enter the flavor you'd like:
-Scoop 1: coconut
-
-Enter a topping (or 'done' if finished): walnuts
-Added walnuts!
+Scoop 1: vanilla
+Scoop 2: chocolate chunk
 
 Enter a topping (or 'done' if finished): done
 
 === Your Ice Cream Order ===
-Scoop 1: Coconut
+['waffle'] Cone
+Scoop 1: Vanilla
+Scoop 2: Chocolate Chunk
 
-Toppings: 
- - Walnuts
-
-Total: $3.00
+Total: $7.00
