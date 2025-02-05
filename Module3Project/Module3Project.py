@@ -16,6 +16,9 @@ def display_menu():
     #shows available flavors and toppings to the customer
     print("\n=== Welcome to the Ice Cream Shop! ===")
 
+    #TODO maybe add a question: would you like to search our flavors or see the full menu?
+    
+
     #add cone types to the display menu:
     print("\nAvailable types of cone:")
 
