@@ -10,14 +10,13 @@ prices = {
     "scoop": 3.50, 
     "topping": 0.50
     }
-
+ 
+ #TODO Add a question: would you like to search our flavors or see the full menu?
+   
 #define/declare a new function (modularized code, does a single task)
 def display_menu(): 
     #shows available flavors and toppings to the customer
-    print("\n=== Welcome to the Ice Cream Shop! ===")
-
-    #TODO maybe add a question: would you like to search our flavors or see the full menu?
-    
+    print("\n=== Welcome to the Ice Cream Shop! ===") 
 
     #add cone types to the display menu:
     print("\nAvailable types of cone:")
