@@ -13,9 +13,11 @@ prices = {
 
 #User input search vs. menu:
 choice = []    
+
+#ask user to choose between searching the ice cream flavors and seeing the full menu:
    
 #define/declare a new function (modularized code, does a single task)
-def display_menu(): 
+def display_menu(choice): 
     #shows available flavors and toppings to the customer
     print("\n=== Welcome to the Ice Cream Shop! ===") 
 
@@ -55,9 +57,9 @@ def display_menu():
                 break
 
             elif choice == 'search':
-                #TODO add search function here:    
+                #TODO add search function here:    (or maybe make a new function)
 
-        #TODO fix this except squiggle? 
+        #TODO fix this except block, or the above code
         except ValueError:
             #if something other than search or enter is input, ask again
             print("Please type search to search or hit the enter button to see the full menu: ")       
