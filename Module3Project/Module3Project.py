@@ -10,39 +10,57 @@ prices = {
     "scoop": 3.50, 
     "topping": 0.50
     }
- 
- #TODO Add a question: would you like to search our flavors or see the full menu?
+
+#User input search vs. menu:
+choice = []    
    
 #define/declare a new function (modularized code, does a single task)
 def display_menu(): 
     #shows available flavors and toppings to the customer
     print("\n=== Welcome to the Ice Cream Shop! ===") 
 
-    #add cone types to the display menu:
-    print("\nAvailable types of cone:")
+ #TODOne Add a question
+    print("\n Would you like to search ice cream flavors or see our full menu?")
+    choice = input("\nPlease type search to search ice cream flavors or hit 'enter' to see the full menu. ").lower()
 
-    #Loop through the types of cones:
-    for cone in cone_types:
-        print(f" - {cone}")
-        
-    print("\nAvailable Flavors:")
+    while True:
+        try: 
+            if choice == []:
+                #add cone types to the display menu:
+                print("\nAvailable types of cone:")
 
-    #Loop through the flavor list and show each flavor,
-    #then do the same for toppings
-    #use a for loop because you know the number of flavors
-    for flavor in flavors: 
-        print(f" - {flavor}")
-        #TODO add the concatenation way to do this (extra, not required)
+                #Loop through the types of cones:
+                for cone in cone_types:
+                    print(f" - {cone}")
+                    
+                print("\nAvailable Flavors:")
 
-    print("\nAvailable Toppings:")
-    for topping in toppings:
-        print(f"- {topping}")
+                #Loop through the flavor list and show each flavor,
+                #then do the same for toppings
+                #use a for loop because you know the number of flavors
+                for flavor in flavors: 
+                    print(f" - {flavor}")
+                    #TODO add the concatenation way to do this (extra, not required)
 
-    #display prices to user 
-    print("\nPrices")        
-    print(f"Scoops: ${prices['scoop']:.2f} each")
-    #TODO extra: see if you can use just the place of the , not the name in the {prices['0']}
-    print(f"toppings: ${prices['topping']:.2f} each")
+                print("\nAvailable Toppings:")
+                for topping in toppings:
+                    print(f"- {topping}")
+
+                #display prices to user 
+                print("\nPrices")        
+                print(f"Scoops: ${prices['scoop']:.2f} each")
+
+                #TODO extra: see if you can use just the place of the , not the name in the {prices['0']}
+                print(f"toppings: ${prices['topping']:.2f} each")
+                break
+
+            elif choice == 'search':
+                #TODO add search function here:    
+
+        #TODO fix this except squiggle? 
+        except ValueError:
+            #if something other than search or enter is input, ask again
+            print("Please type search to search or hit the enter button to see the full menu: ")       
 
 def get_cone():
     #get cone type from the customer
