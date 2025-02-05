@@ -7,7 +7,7 @@ cone_types = ["cake", "sugar", "waffle"]
 flavors = ["mint-chocolate chip", "coconut", "vanilla", "caramel swirl", "praline pecan", "chocolate chunk"]
 toppings = ["chocolate syrup", "walnuts", "cherries"]
 prices = {
-    "scoop": 2.50, 
+    "scoop": 3.50, 
     "topping": 0.50
     }
 
@@ -47,7 +47,7 @@ def get_cone():
     chosen_cone = []
 
     #ask the user what type of cone they would like:
-    cone = input("\nWhich type of cone would you like: cake, sugar, or waffle?").lower()
+    cone = input("\nWhich type of cone would you like: cake, sugar, or waffle? ").lower()
    
     while True:
         try:
@@ -55,7 +55,7 @@ def get_cone():
             if cone in cone_types:   
                 #add the cone the user chooses to the chosen_cone list
                 chosen_cone.append(cone)
-                print(f"You chose {cone}!")
+                print(f"You chose a {cone} cone!")
                 break
         except ValueError:
             print("Please choose cake, sugar, or waffle.") 
@@ -72,7 +72,7 @@ def get_flavors():
     while True:
         try:
             #code to execute:Prompt use to choose their scoops
-            num_scoops = int(input("\nHow many scoops would you like? (1-3): "))
+            num_scoops = int(input("\nHow many scoops of ice cream would you like? (1-3): "))
             #validate the input
 
             if 1 <= num_scoops <= 3:
@@ -163,9 +163,9 @@ def print_receipt(chosen_cone, num_scoops, chosen_flavors, chosen_toppings):
 
     #check to see if the total is larger than $10
     if total >10:
-        #if it is, give a 10% deduction or multiply by .9
+        #if it is greater than 10, give a 10% deduction or multiply by .9
         total = total * .90
-        print(f"You received a 10% discount today")
+        print(f"\nYou received a 10% discount today!")
 
     print(f"\nTotal: ${total:.2f}")
 
