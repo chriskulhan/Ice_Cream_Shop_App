@@ -23,7 +23,7 @@ def display_menu():
     for cone in cone_types:
         print(f" - {cone}")
         
-    print("\nAvailable flavors:")
+    print("\nAvailable Flavors:")
 
     #Loop through the flavor list and show each flavor,
     #then do the same for toppings
@@ -39,7 +39,7 @@ def display_menu():
     #display prices to user 
     print("\nPrices")        
     print(f"Scoops: ${prices['scoop']:.2f} each")
-    #TODO see if you can use just the place of the , not the name in the {prices['0']} (extra)
+    #TODO extra: see if you can use just the place of the , not the name in the {prices['0']}
     print(f"toppings: ${prices['topping']:.2f} each")
 
 def get_cone():
@@ -47,12 +47,13 @@ def get_cone():
     chosen_cone = []
 
     #ask the user what type of cone they would like:
-    cone = input("Which type of cone would you like: cake, sugar, or waffle?").lower()
+    cone = input("\nWhich type of cone would you like: cake, sugar, or waffle?").lower()
    
     while True:
         try:
             #make sure they choose a cone type you have:
             if cone in cone_types:   
+                #add the cone the user chooses to the chosen_cone list
                 chosen_cone.append(cone)
                 print(f"You chose {cone}!")
                 break
@@ -72,11 +73,12 @@ def get_flavors():
         try:
             #code to execute:Prompt use to choose their scoops
             num_scoops = int(input("\nHow many scoops would you like? (1-3): "))
-            #validate teh input
+            #validate the input
 
             if 1 <= num_scoops <= 3:
                 break
             print("Please choose between 1 and 3 scoops. ")
+        #handle errors if the user answers a non-sanctioned answer    
         except ValueError:
             print("Please enter a number.")            
     
@@ -125,19 +127,23 @@ def get_toppings():
 
 def calculate_total (num_scoops, num_toppings):
     #Calculates the total cost of the order
+
     scoop_cost = num_scoops * prices["scoop"]
     #prices is a dictionary, look up price
+
     topping_cost = num_toppings * prices["topping"]
+
     #total cost of the order: 
     return scoop_cost + topping_cost
 
 def print_receipt(chosen_cone, num_scoops, chosen_flavors, chosen_toppings):
     #prints a nice receipt for the customer
     print("\n=== Your Ice Cream Order ===")
+
+    #print cone choice:
     if chosen_cone:
-        #TODO this is overly complex, and I keep getting errors.
-        for cone in chosen_cone:
-            print(f"{chosen_cone.title()} + Cone")
+        #TODO keeps printing as ['cake']. this must be an obvious fix, but I'm tired.
+        print(f"{chosen_cone} Cone")
 
     for i in range(num_scoops):
         #i is the variable that will hold the number for the current scoop
@@ -152,8 +158,15 @@ def print_receipt(chosen_cone, num_scoops, chosen_flavors, chosen_toppings):
 
     #Print the total outside of the if loop
     #new variable called total:
-    #use len to find how many toppings (length of the )
-    total = calculate_total(num_scoops, len(chosen_toppings))      
+    #use len to find how many toppings (length of the num_scoops)
+    total = calculate_total(num_scoops, len(chosen_toppings))  
+
+    #check to see if the total is larger than $10
+    if total >10:
+        #if it is, give a 10% deduction or multiply by .9
+        total = total * .90
+        print(f"You received a 10% discount today")
+
     print(f"\nTotal: ${total:.2f}")
 
     #save the order to a file 
