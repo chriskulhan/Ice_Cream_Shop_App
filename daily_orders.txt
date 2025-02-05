@@ -1,2 +1,4 @@
 
 Order: 1 scoops - $3.00
+Order: 1 scoops - $3.00
+Order: 2 scoops - $5.50
