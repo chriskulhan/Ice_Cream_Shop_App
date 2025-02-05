@@ -134,11 +134,16 @@ def calculate_total (num_scoops, num_toppings):
 def print_receipt(chosen_cone, num_scoops, chosen_flavors, chosen_toppings):
     #prints a nice receipt for the customer
     print("\n=== Your Ice Cream Order ===")
-    print(f"\n{chosen_cone.title()} + Cone")
+    if chosen_cone:
+        #TODO this is overly complex, and I keep getting errors.
+        for cone in chosen_cone:
+            print(f"{chosen_cone.title()} + Cone")
+
     for i in range(num_scoops):
         #i is the variable that will hold the number for the current scoop
         #.title will give this title case:
         print(f"Scoop {i+1}: {chosen_flavors[i].title()}")
+
     if chosen_toppings:
         print("\nToppings: ")
         #loop through the list of toppings, use for because # in list is known
@@ -176,7 +181,7 @@ def main():
     #print(f"Toppings: {chosen_toppings}")
 
     #Display receipt:
-    print_receipt(num_scoops, chosen_flavors, chosen_toppings)
+    print_receipt(chosen_cone, num_scoops, chosen_flavors, chosen_toppings)
 
 #automatically executes the main function when the application runs
 if __name__ == "__main__":
