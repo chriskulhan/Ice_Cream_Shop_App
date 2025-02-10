@@ -24,7 +24,7 @@ def display_menu(choice):
 
  #TODOne Add a question
     print("\n Would you like to search ice cream flavors or see our full menu?")
-    choice = input("\nPlease type search and click 'enter' to search ice cream flavors or hit 'enter' to see the full menu. ").lower()
+    choice = input("\nPlease type search and hit enter to search our ice cream flavors or hit the enter button to see the full menu: ").lower()
 
     while True:
         try: 
@@ -58,15 +58,24 @@ def display_menu(choice):
                 break
 
             elif choice == "search":
-                #TODO add search function here:    (or maybe make a new function)
+                break
 
         #TODO fix this except block, or the above code
         except ValueError:
             #if something other than search or enter is input, ask again
-            print("Please type search to search or hit the enter button to see the full menu: ")   
+            print("Please type search and hit enter to search our ice cream flavors or hit the enter button to see the full menu: ")   
 
-        #TODO Not sure if this is needed: 
-            break       
+def search_ice_cream_flavors():
+    #look for user selected search items in our list/dictionary of ice cream flavors
+    
+    flavor = []
+
+    print("You chose to search for ice cream flavors: ")  
+    while True:
+        try: if flavor in flavors:
+        # TODO 1: figure out how to compare flavors (from way above) to flavor
+        #TODO 2: if you are done searching and would like to order: Break out of the loop to the ordering part, 
+            print(f"We have that type of ice cream! Press enter      
 
 def get_cone():
     #get cone type from the customer
