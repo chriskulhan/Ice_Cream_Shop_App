@@ -11,19 +11,20 @@ prices = {
     "topping": 0.50
     }
 
-#User input search vs. menu:
-choice = []    
-
 #ask user to choose between searching the ice cream flavors and seeing the full menu:
    
 #define/declare a new function (modularized code, does a single task)
 def display_menu(choice): 
+
+    #User input: search vs. display menu:
+    choice = [] 
+
     #shows available flavors and toppings to the customer
     print("\n=== Welcome to the Ice Cream Shop! ===") 
 
  #TODOne Add a question
     print("\n Would you like to search ice cream flavors or see our full menu?")
-    choice = input("\nPlease type search to search ice cream flavors or hit 'enter' to see the full menu. ").lower()
+    choice = input("\nPlease type search and click 'enter' to search ice cream flavors or hit 'enter' to see the full menu. ").lower()
 
     while True:
         try: 
@@ -56,13 +57,16 @@ def display_menu(choice):
                 print(f"toppings: ${prices['topping']:.2f} each")
                 break
 
-            elif choice == 'search':
+            elif choice == "search":
                 #TODO add search function here:    (or maybe make a new function)
 
         #TODO fix this except block, or the above code
         except ValueError:
             #if something other than search or enter is input, ask again
-            print("Please type search to search or hit the enter button to see the full menu: ")       
+            print("Please type search to search or hit the enter button to see the full menu: ")   
+
+        #TODO Not sure if this is needed: 
+            break       
 
 def get_cone():
     #get cone type from the customer
@@ -77,7 +81,7 @@ def get_cone():
             if cone in cone_types:   
                 #add the cone the user chooses to the chosen_cone list
                 chosen_cone.append(cone)
-                print(f"You chose a {cone} cone!")
+                print(f"You chose a {chosen_cone} cone!")
                 break
         except ValueError:
             print("Please choose cake, sugar, or waffle.") 
