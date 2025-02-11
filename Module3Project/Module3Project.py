@@ -24,7 +24,7 @@ def display_menu(choice):
 
  #TODOne Add a question
     print("\n Would you like to search ice cream flavors or see our full menu?")
-    choice = input("\nPlease type search and hit enter to search our ice cream flavors or hit the enter button to see the full menu: ").lower()
+    choice = input("\nTo search our ice cream flavors type search and click 'enter'. To see the full menu click 'enter': ").lower()
 
     while True:
         try: 
