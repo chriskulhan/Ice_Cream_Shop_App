@@ -14,9 +14,9 @@ prices = {
 #ask user to choose between searching the ice cream flavors and seeing the full menu:
    
 #define/declare a new function (modularized code, does a single task)
-def display_menu(choice): 
+def display_menu(): 
 
-    #User input: search vs. display menu:
+    #User input: search vs. display menu: (added as per Dr. Mary's notes on my homework)
     choice = [] 
 
     #shows available flavors and toppings to the customer
@@ -25,6 +25,7 @@ def display_menu(choice):
  #TODOne Add a question
     print("\n Would you like to search ice cream flavors or see our full menu?")
     choice = input("\nTo search our ice cream flavors type search and click 'enter'. To see the full menu click 'enter': ").lower()
+    # print(choice) #testing
 
     while True:
         try: 
@@ -71,11 +72,11 @@ def search_ice_cream_flavors():
     flavor = []
 
     print("You chose to search for ice cream flavors: ")  
-    while True:
-        try: if flavor in flavors:
+    # while True:
+    #     try: if flavor in flavors:
         # TODO 1: figure out how to compare flavors (from way above) to flavor
         #TODO 2: if you are done searching and would like to order: Break out of the loop to the ordering part, 
-            print(f"We have that type of ice cream! Press enter      
+            #  print(f"We have that type of ice cream! Press enter     
 
 def get_cone():
     #get cone type from the customer
@@ -90,13 +91,15 @@ def get_cone():
             if cone in cone_types:   
                 #add the cone the user chooses to the chosen_cone list
                 chosen_cone.append(cone)
-                print(f"You chose a {chosen_cone} cone!")
+                print(f"You chose a {cone} cone!")
                 break
         except ValueError:
             print("Please choose cake, sugar, or waffle.") 
     
     #return the cone type to the calling function
-    return chosen_cone        
+    print ("this is in get_cone:")
+    print(chosen_cone)
+    return chosen_cone       
 
 def get_flavors():
     #Get ice cream flavor from the customer
@@ -212,7 +215,7 @@ def print_receipt(chosen_cone, num_scoops, chosen_flavors, chosen_toppings):
 
 #Main function (this is called and run first, director of the show)
 def main():
-    display_menu()
+    # display_menu()
 
     #call get_cone function, returns type of cone
     chosen_cone = get_cone()

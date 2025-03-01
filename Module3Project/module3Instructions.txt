@@ -1,0 +1,286 @@
+Building an Ice Cream Shop App
+The Ice Cream Shop Manager 🍦
+Ice cream shop
+Imagine you've been asked to create a program that helps manage a local ice cream shop. This program will help track flavors, calculate prices, and create delicious sundaes for customers. We'll use Python's fundamental concepts to build this system step by step.
+
+What Our Program Will Do:
+
+Think of this program as a digital menu board and calculator combined. It will:
+
+Show customers what flavors are available, just like a menu board in a real ice cream shop
+
+Help them choose toppings for their sundae
+
+Calculate the total cost of their order
+
+Print a nice receipt showing what they ordered
+
+Part 1: Building Our Ice Cream Shop Program 🛠️
+(In-Class Coding)
+We'll build our program in three steps, testing each part as we go. This approach helps us catch any problems early and ensures each part works before we move on. Think of it like building with blocks - we want to make sure each layer is solid before adding the next one.
+
+Step 1: Setting Up Our Menu
+First, let's create our menu system. Enter this code into your Module3Project.py file:
+
+# Store our ice cream shop's menu items
+flavors = ["vanilla", "caramel", "mint"]
+toppings = ["sprinkles", "nuts", "cherry"]
+prices = {
+    "scoop": 2.50,
+    "topping": 0.50
+}
+
+def display_menu():
+    """Shows available flavors and toppings to the customer"""
+    print("\n=== Welcome to the Ice Cream Shop! ===")
+    print("\nAvailable Flavors:")
+    for flavor in flavors:
+        print(f"- {flavor}")
+    
+    print("\nAvailable Toppings:")
+    for topping in toppings:
+        print(f"- {topping}")
+    print("\nPrices:")
+    print(f"Scoops: ${prices['scoop']:.2f} each")
+    print(f"Toppings: ${prices['topping']:.2f} each")
+
+# Simple test function
+def main():
+    display_menu()
+
+if __name__ == "__main__":
+    main()
+Testing Step 1:
+Let's make sure our menu display works. In your terminal, run:
+
+python Module3Project.py
+You should see something like this:
+
+=== Welcome to the Ice Cream Shop! ===
+
+Available Flavors:
+- vanilla
+- chocolate
+- strawberry
+- mint
+
+Available Toppings:
+- sprinkles
+- chocolate chips
+- nuts
+- cherry
+
+Prices:
+Scoops: $2.50 each
+Toppings: $0.50 each
+If your output looks different or you see any errors, double-check your code for typos, especially in the list names and print statements.
+
+Step 2: Taking Customer Orders
+Now that our menu works, let's add the code for taking orders. Add these functions to your file:
+
+[Previous code remains the same...]
+
+def get_flavors():
+    """Gets ice cream flavor choices from the customer"""
+    chosen_flavors = []
+    while True:
+        try:
+            num_scoops = int(input("\nHow many scoops would you like? (1-3): "))
+            if 1 <= num_scoops <= 3:
+                break
+            print("Please choose between 1 and 3 scoops.")
+        except ValueError:
+            print("Please enter a number.")
+    
+    print("\nFor each scoop, enter the flavor you'd like:")
+    for i in range(num_scoops):
+        while True:
+            flavor = input(f"Scoop {i+1}: ").lower()
+            if flavor in flavors:
+                chosen_flavors.append(flavor)
+                break
+            print("Sorry, that flavor isn't available.")
+    
+    return num_scoops, chosen_flavors
+
+def get_toppings():
+    """Gets topping choices from the customer"""
+    chosen_toppings = []
+    while True:
+        topping = input("\nEnter a topping (or 'done' if finished): ").lower()
+        if topping == 'done':
+            break
+        if topping in toppings:
+            chosen_toppings.append(topping)
+            print(f"Added {topping}!")
+        else:
+            print("Sorry, that topping isn't available.")
+    
+    return chosen_toppings
+
+# Updated test function
+def main():
+    num_scoops, chosen_flavors = get_flavors()
+    chosen_toppings = get_toppings()
+    print("\nOrder Summary:")
+    print(f"Scoops: {chosen_flavors}")
+    print(f"Toppings: {chosen_toppings}")
+
+if __name__ == "__main__":
+    main()
+Testing Step 2:
+Let's test our order-taking system. Run your program again and try these tests:
+
+Enter an invalid number of scoops (like 0 or 4) to test error handling
+Try ordering a flavor that's not on the menu
+Add some toppings and use 'done' to finish
+Your program should guide you through the order process and handle mistakes gracefully. If you see any error messages that aren't part of our planned error handling, check your code for issues.
+
+Step 3: Calculating Totals and Printing Receipts
+Finally, let's create functions to handle the business side of things:
+
+def calculate_total(num_scoops, num_toppings):
+    """Calculates the total cost of the order"""
+    scoop_cost = num_scoops * prices["scoop"]
+    topping_cost = num_toppings * prices["topping"]
+    return scoop_cost + topping_cost
+
+def print_receipt(num_scoops, chosen_flavors, chosen_toppings):
+    """Prints a nice receipt for the customer"""
+    print("\n=== Your Ice Cream Order ===")
+    for i in range(num_scoops):
+        print(f"Scoop {i+1}: {chosen_flavors[i].title()}")
+    
+    if chosen_toppings:
+        print("\nToppings:")
+        for topping in chosen_toppings:
+            print(f"- {topping.title()}")
+    
+    total = calculate_total(num_scoops, len(chosen_toppings))
+    print(f"\nTotal: ${total:.2f}")
+    
+    # Save order to file
+    with open("daily_orders.txt", "a") as file:
+        file.write(f"\nOrder: {num_scoops} scoops - ${total:.2f}")
+
+def main():
+    """Runs our ice cream shop program"""
+    display_menu()
+    num_scoops, chosen_flavors = get_flavors()
+    chosen_toppings = get_toppings()
+    print_receipt(num_scoops, chosen_flavors, chosen_toppings)
+
+if __name__ == "__main__":
+    main()
+Understanding Our Code 📚
+Let's look at how we're using Python's fundamental concepts in our program:
+
+Lists: We use lists to store our flavors and toppings. Lists are perfect for this because we can easily add or remove items as our menu changes.
+
+Dictionaries: Our prices are stored in a dictionary, making it easy to look up the cost of scoops and toppings. This is like having a price guide at our fingertips.
+
+Loops: We use loops in several ways - to display menu items, to get multiple scoops of ice cream, and to add toppings. This saves us from writing repetitive code.
+
+Input and Output: We interact with customers using input() to get their choices and print() to show them information. The print_receipt() function creates a professional-looking output.
+
+File Operations: We're saving order information to a file called "daily_orders.txt". This helps us keep track of all orders throughout the day.
+
+Testing Your Program 🧪
+When you run your program, try these test scenarios:
+
+Order a single scoop with no toppings
+
+Try a three-scoop sundae with multiple toppings
+
+Enter an invalid flavor or topping to make sure your error handling works
+
+Check that your daily_orders.txt file is being created and updated correctly
+
+Example Run:
+
+=== Welcome to the Ice Cream Shop! ===
+
+Available Flavors:
+- vanilla
+- caramel
+- mint
+
+Available Toppings:
+- sprinkles
+- nuts
+- cherry
+
+Prices:
+Scoops: $2.50 each
+Toppings: $0.50 each
+
+How many scoops would you like? (1-3): 2
+
+For each scoop, enter the flavor you'd like:
+Scoop 1: caramel
+Scoop 2: vanilla
+
+Enter a topping (or 'done' when finished): sprinkles
+Added sprinkles!
+Enter a topping (or 'done' when finished): cherry
+Added cherry!
+Enter a topping (or 'done' when finished): done
+
+=== Your Ice Cream Order ===
+Scoop 1: Caramel
+Scoop 2: Vanilla
+
+Toppings:
+- Sprinkles
+- Cherry
+
+Total: $6.00
+Step 4: Commit Your Changes
+Now that you are done, you need to commit your changes to the repository. "Commit" means to save the changes in the repo.
+Click on the Source Control button in the left menu or press Ctrl+shift+G on your keyboard.
+
+In the Message box, type Initial Commit. If prompted to stage your changes, click the Yes button.
+
+Then click the Commit button to stage your changes to the repository.
+Commit
+If you are asked to stage your changes first, click Yes.
+
+Now the Sync Changes button appears. Click the Sync Changes button to push your code to the repository.
+
+View your repo at GitHub.com to make sure your new code is in the repo.
+Step 5: Submitting Your Work 📝
+Click the Octocat logo to return to your GitHub Dashboard.
+Find and click your repository name in the Top Repositories list.
+Copy your repository's URL from the browser's address bar (it should look like: https://github.com/yourUserName/yourRepositoryName).
+Submit the URL in the assignment submission box.
+If you need more time, you can submit what you have as a rough draft and note that it's incomplete. Final versions are due by 4 PM on Thursday of the last week of the course.
+
+Part 2: Expanding the Ice Cream Shop App
+(Individual Coding - At Home)
+Add three new ice cream flavors to the flavors list
+Add an option to choose a cake cone, sugar cone, or waffle cone 🍦
+Add a discount feature that gives 10% off orders over $10
+Create a function that lets customers search for their favorite flavor
+
+Optional Fun Challenge
+If you finish early, create a Sundae class that adds special sundae combinations like "Banana Split" or "Triple Chocolate Supreme"!
+
+Submit Your Work
+Click on the Octocat logo in the upper left corner of the GitHub screen to go to your Dashboard.
+
+On the left side of the dashboard, click on your repository name in the list of Top Repositories.
+Click on Octocat logo then click on the repository name in the list of Top Repositories
+Copy the URL for your repository. The URL is in the address bar of your browser. 
+The URL looks something like this: https://github.com/yourUserName/yourRepositoryName
+
+
+
+Paste the URL for your repository into the textbox on this assignment page.
+
+Click the Submit button.
+
+If you don't complete your project by the due date listed on the course schedule, please submit your rough draft so you don't get a zero. In the comments box, write that this is a rough draft so your instructor knows to hold off on grading it for you.
+
+Upload your final draft by the final due date for the course, which is 4 PM on Thursday of the last week.
+
+Congratulations! You've completed your lab! 🥳
